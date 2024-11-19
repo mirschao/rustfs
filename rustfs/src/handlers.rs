@@ -10,7 +10,7 @@ pub async fn upload_file(
     config: &State<Config>,
 ) -> Json<String> {
     let storage = Storage::new(config.storage_path.clone());
-    match storage.save_file(&filename, data).await {
+    match storage.save_file(&filename, data) {
         Ok(_) => Json(format!("File '{}' uploaded successfully!", filename)),
         Err(e) => Json(format!("Failed to upload file '{}': {}", filename, e)),
     }
